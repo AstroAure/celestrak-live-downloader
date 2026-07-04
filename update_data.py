@@ -39,9 +39,9 @@ def update_csv(id, new_data):
 		return False
 
 if __name__ == "__main__":
-	if not SAT_INTDES_IDS or SAT_INTDES_IDS == ['']:
+	if not sat_ids or sat_ids == ['']:
 		raise ValueError("No satellite ids defined in SAT_INTDES_IDS")
-	for id in SAT_INTDES_IDS:
+	for id in sat_ids:
 		id = id.strip()
 		if not id:
 			continue
