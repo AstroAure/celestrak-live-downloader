@@ -26,8 +26,8 @@ def update_csv(id, new_data):
 		df_existing.insert(0, 'SAVED_AT', None)
 		df_existing.insert(1, 'EPOCH', None)
 
-	# if new_data['EPOCH'] and (pd.to_datetime(new_data['EPOCH']) - pd.to_datetime(df_existing['EPOCH'].values[-1]) > timedelta(hours=1)):
-	if new_data['EPOCH'] and new_data['EPOCH'] not in df_existing['EPOCH']:
+	if new_data['EPOCH'] and (pd.to_datetime(new_data['EPOCH']) - pd.to_datetime(df_existing['EPOCH']).max() > timedelta(hours=1)):
+	# if new_data['EPOCH'] and new_data['EPOCH'] not in df_existing['EPOCH']:
 		# Adds a new row and timestamp
 		new_row = {**new_data, 'SAVED_AT': datetime.now().isoformat()}
 		df_new = pd.DataFrame([new_row])

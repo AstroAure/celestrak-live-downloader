@@ -24,11 +24,13 @@ def plot_elements(axs, sat_id, color='r'):
     raan = df['RA_OF_ASC_NODE'] # [deg]
     aop = df['ARG_OF_PERICENTER'] # [deg]
     # Plot
-    axs[0,0].plot(epoch, ap/1e3, c=color, label=sat_id, marker='D', mec='k')
+    label = df['OBJECT_NAME'].values[-1]
+    if label[:6] == 'OBJECT': label = sat_id
+    axs[0,0].plot(epoch, ap/1e3, c=color, label=label, marker='D', mec='k')
     axs[0,0].plot(epoch, pe/1e3, c=color, marker='D', mec='k', ls='--')
-    axs[0,1].plot(epoch, ecc, c=color, label=sat_id, marker='D', mec='k')
-    axs[1,0].plot(epoch, inc, c=color, label=sat_id, marker='D', mec='k')
-    axs[1,1].plot(epoch, raan, c=color, label=sat_id, marker='D', mec='k')
+    axs[0,1].plot(epoch, ecc, c=color, label=label, marker='D', mec='k')
+    axs[1,0].plot(epoch, inc, c=color, label=label, marker='D', mec='k')
+    axs[1,1].plot(epoch, raan, c=color, label=label, marker='D', mec='k')
 
 if __name__ == '__main__':
 
